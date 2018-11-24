@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Country InfoVC-->
         <scene sceneID="BNh-4g-rx0">
             <objects>
-                <viewController id="agM-zd-iT0" sceneMemberID="viewController">
+                <viewController id="agM-zd-iT0" customClass="CountryInfoVC" customModule="CountryInfo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rlH-Yq-D3C">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -74,13 +74,13 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJr-g4-H5S">
                                                 <rect key="frame" x="8" y="200" width="359" height="185"/>
-                                                <mutableString key="text">rjenbv;kdfjsnv;kdfsjnv;kldfjnv;dfksjnvdfkjsvrjenbv;kdfjsnv;kdfsjnv;kldfjnv;dfksjnvdfkjsvrjenbv;kdfjsnv;kdfsjnv;kldfjnv;dfksjnvdfkjsvrjenbv;kdfjsnv;kdfsjnv;kldfjnv;dfksjnvdfkjsvrjenbv;kdfjsnv;kdfsjnv;kldfjnv;dfksjnvdfkjsvrjenbv;kdfjsnv;kdfsjnv;kldfjnv;dfksjnvdfkjsvrjenbv;kdfjsnv;kdfsjnv;kldfjnv;dfksjnvdfkjsvrjenbv;kdfjsnv;kdfsjnv;kldfjnv;dfksjnvdfkjsvrjenbv;kdfjsnv;kdfsjnv;kldfjnv;dfksjnvdfkjsvrjenbv;kdfjsnv;kdfsjnv;kldfjnv;dfksjnvdfkjsvrjenbv;kdfjsnv;kdfsjnv;kldfjnv;dfksjnvdfkjsvrjenbv;kdfjsnv;kdfsjnv;kldfjnv;dfksjnvdfkjsvrjenbv;kdfjsnv;kdfsjnv;kldfjnv;dfksjnvdfkjsvrjenbv;kdfjsnv;kdfsjnv;kldfjnv;dfksjnvdfkjsvrjenbv;kdfjsnv;kdfsjnv;kldfjnv;dfksjnvdfkjsv</mutableString>
+                                                <string key="text">rjenbv;kdfjsnv;kdfsjnv;kldfjnv;dfksjnvdfkjsvrjenbv;kdfjsnv;kdfsjnv;kldfjnv;dfksjnvdfkjsvrjenbv;kdfjsnv;kdfsjnv;kldfjnv;dfksjnvdfkjsvrjenbv;kdfjsnv;kdfsjnv;kldfjnv;dfksjnvdfkjsvrjenbv;kdfjsnv;kdfsjnv;kldfjnv;dfksjnvdfkjsvrjenbv;kdfjsnv;kdfsjnv;kldfjnv;dfksjnvdfkjsvrjenbv;kdfjsnv;kdfsjnv;kldfjnv;dfksjnvdfkjsvrjenbv;kdfjsnv;kdfsjnv;kldfjnv;dfksjnvdfkjsvrjenbv;kdfjsnv;kdfsjnv;kldfjnv;dfksjnvdfkjsvrjenbv;kdfjsnv;kdfsjnv;kldfjnv;dfksjnvdfkjsvrjenbv;kdfjsnv;kdfsjnv;kldfjnv;dfksjnvdfkjsvrjenbv;kdfjsnv;kdfsjnv;kldfjnv;dfksjnvdfkjsvrjenbv;kdfjsnv;kdfsjnv;kldfjnv;dfksjnvdfkjsvrjenbv;kdfjsnv;kdfsjnv;kldfjnv;dfksjnvdfkjsvrjenbv;kdfjsnv;kdfsjnv;kldfjnv;dfksjnvdfkjsv</string>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="crl-wZ-U3B">
-                                                <rect key="frame" x="8" y="171" width="44" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="About" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="crl-wZ-U3B">
+                                                <rect key="frame" x="8" y="171" width="48" height="21"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -130,6 +130,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="sw2-yr-BI3"/>
                     </view>
+                    <connections>
+                        <outlet property="capital" destination="U1s-JD-uAd" id="9K7-dy-ZpP"/>
+                        <outlet property="continent" destination="dSC-ZZ-cBT" id="Glu-i8-777"/>
+                        <outlet property="countryName" destination="e8W-36-gaV" id="2Th-XY-o2Q"/>
+                        <outlet property="image" destination="bCA-qc-aJi" id="jv2-XS-3BC"/>
+                        <outlet property="information" destination="kJr-g4-H5S" id="HJ5-tL-Ub3"/>
+                        <outlet property="population" destination="u1S-J7-R4P" id="gY6-gB-dkq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3SF-sD-z3H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
