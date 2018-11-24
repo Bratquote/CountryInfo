@@ -13,6 +13,18 @@
 		9EA3366F21A8809400400E5A /* CountryInfo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9EA3366D21A8809400400E5A /* CountryInfo.xcdatamodeld */; };
 		9EA3367121A8809500400E5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9EA3367021A8809500400E5A /* Assets.xcassets */; };
 		9EA3367421A8809500400E5A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EA3367221A8809500400E5A /* LaunchScreen.storyboard */; };
+		9EA3367F21A92D8300400E5A /* CountryListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA3367E21A92D8300400E5A /* CountryListVC.swift */; };
+		9EA3368121A92DA800400E5A /* CountryInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA3368021A92DA800400E5A /* CountryInfoVC.swift */; };
+		9EA3368321A92DB600400E5A /* CountryJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA3368221A92DB600400E5A /* CountryJSON.swift */; };
+		9EA3368521A92EB200400E5A /* CountryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA3368421A92EB200400E5A /* CountryInfo.swift */; };
+		9EA3368721A92EC800400E5A /* JSONData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA3368621A92EC800400E5A /* JSONData.swift */; };
+		9EA3368921A92FB900400E5A /* JSONHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA3368821A92FB900400E5A /* JSONHandler.swift */; };
+		9EA3368B21A92FDD00400E5A /* JSONHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA3368A21A92FDD00400E5A /* JSONHandlerProtocol.swift */; };
+		9EA3368D21A9340900400E5A /* UseCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA3368C21A9340900400E5A /* UseCoreData.swift */; };
+		9EA3368F21A9343100400E5A /* UseCoreDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA3368E21A9343100400E5A /* UseCoreDataProtocol.swift */; };
+		9EA3369221A9355000400E5A /* CountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA3369021A9355000400E5A /* CountryCell.swift */; };
+		9EA3369321A9355000400E5A /* CountryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EA3369121A9355000400E5A /* CountryCell.xib */; };
+		9EA3369521A93BA100400E5A /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA3369421A93BA100400E5A /* TableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +36,18 @@
 		9EA3367021A8809500400E5A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9EA3367321A8809500400E5A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9EA3367521A8809500400E5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9EA3367E21A92D8300400E5A /* CountryListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListVC.swift; sourceTree = "<group>"; };
+		9EA3368021A92DA800400E5A /* CountryInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryInfoVC.swift; sourceTree = "<group>"; };
+		9EA3368221A92DB600400E5A /* CountryJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryJSON.swift; sourceTree = "<group>"; };
+		9EA3368421A92EB200400E5A /* CountryInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryInfo.swift; sourceTree = "<group>"; };
+		9EA3368621A92EC800400E5A /* JSONData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONData.swift; sourceTree = "<group>"; };
+		9EA3368821A92FB900400E5A /* JSONHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONHandler.swift; sourceTree = "<group>"; };
+		9EA3368A21A92FDD00400E5A /* JSONHandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONHandlerProtocol.swift; sourceTree = "<group>"; };
+		9EA3368C21A9340900400E5A /* UseCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCoreData.swift; sourceTree = "<group>"; };
+		9EA3368E21A9343100400E5A /* UseCoreDataProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCoreDataProtocol.swift; sourceTree = "<group>"; };
+		9EA3369021A9355000400E5A /* CountryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCell.swift; sourceTree = "<group>"; };
+		9EA3369121A9355000400E5A /* CountryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountryCell.xib; sourceTree = "<group>"; };
+		9EA3369421A93BA100400E5A /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +80,9 @@
 		9EA3366521A8809400400E5A /* CountryInfo */ = {
 			isa = PBXGroup;
 			children = (
+				9EA3367D21A92D3A00400E5A /* Controller */,
+				9EA3367C21A92D3300400E5A /* Model */,
+				9EA3367B21A92D2A00400E5A /* View */,
 				9EA3366621A8809400400E5A /* AppDelegate.swift */,
 				9EA3366821A8809400400E5A /* ViewController.swift */,
 				9EA3366A21A8809400400E5A /* Main.storyboard */,
@@ -65,6 +92,39 @@
 				9EA3366D21A8809400400E5A /* CountryInfo.xcdatamodeld */,
 			);
 			path = CountryInfo;
+			sourceTree = "<group>";
+		};
+		9EA3367B21A92D2A00400E5A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9EA3367E21A92D8300400E5A /* CountryListVC.swift */,
+				9EA3368021A92DA800400E5A /* CountryInfoVC.swift */,
+				9EA3369021A9355000400E5A /* CountryCell.swift */,
+				9EA3369121A9355000400E5A /* CountryCell.xib */,
+				9EA3369421A93BA100400E5A /* TableViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9EA3367C21A92D3300400E5A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9EA3368621A92EC800400E5A /* JSONData.swift */,
+				9EA3368221A92DB600400E5A /* CountryJSON.swift */,
+				9EA3368421A92EB200400E5A /* CountryInfo.swift */,
+				9EA3368C21A9340900400E5A /* UseCoreData.swift */,
+				9EA3368E21A9343100400E5A /* UseCoreDataProtocol.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9EA3367D21A92D3A00400E5A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9EA3368821A92FB900400E5A /* JSONHandler.swift */,
+				9EA3368A21A92FDD00400E5A /* JSONHandlerProtocol.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +185,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EA3369321A9355000400E5A /* CountryCell.xib in Resources */,
 				9EA3367421A8809500400E5A /* LaunchScreen.storyboard in Resources */,
 				9EA3367121A8809500400E5A /* Assets.xcassets in Resources */,
 				9EA3366C21A8809400400E5A /* Main.storyboard in Resources */,
@@ -138,8 +199,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EA3368521A92EB200400E5A /* CountryInfo.swift in Sources */,
+				9EA3369521A93BA100400E5A /* TableViewController.swift in Sources */,
+				9EA3368D21A9340900400E5A /* UseCoreData.swift in Sources */,
+				9EA3367F21A92D8300400E5A /* CountryListVC.swift in Sources */,
 				9EA3366921A8809400400E5A /* ViewController.swift in Sources */,
 				9EA3366721A8809400400E5A /* AppDelegate.swift in Sources */,
+				9EA3368B21A92FDD00400E5A /* JSONHandlerProtocol.swift in Sources */,
+				9EA3368F21A9343100400E5A /* UseCoreDataProtocol.swift in Sources */,
+				9EA3368921A92FB900400E5A /* JSONHandler.swift in Sources */,
+				9EA3368121A92DA800400E5A /* CountryInfoVC.swift in Sources */,
+				9EA3368721A92EC800400E5A /* JSONData.swift in Sources */,
+				9EA3368321A92DB600400E5A /* CountryJSON.swift in Sources */,
+				9EA3369221A9355000400E5A /* CountryCell.swift in Sources */,
 				9EA3366F21A8809400400E5A /* CountryInfo.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
