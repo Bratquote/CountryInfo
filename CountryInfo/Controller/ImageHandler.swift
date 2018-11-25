@@ -15,7 +15,24 @@ class ImageHandler {
     var downloadedImage: UIImage?
     var URL_IMAGE = URL(string: "https://cdn.pixabay.com/photo/2015/10/24/21/30/abkhazia-1005013_960_720.png")
     
-    func getImage(url: String, tableView: UITableView) {
+    
+    
+    func getImage2(urlString: String) {
+        DispatchQueue.global(qos: .background).async {
+            if let url = URL(string: urlString) {
+                let data = try? Data(contentsOf: url)
+                
+                if let imageData = data {
+                    if let image = UIImage(data: imageData){
+                        self.downloadedImage = image
+                    }
+                    
+                }
+            }
+        }
+        
+    }
+    func getImage(url: String) {
         let session = URLSession(configuration: .default)
         
         //creating a dataTask

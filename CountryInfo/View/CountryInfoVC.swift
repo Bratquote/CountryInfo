@@ -17,25 +17,32 @@ class CountryInfoVC: UIViewController {
     @IBOutlet weak var continent: UILabel!
     @IBOutlet weak var information: UILabel!
     
-    var currentCountry: CountryJSON?
-    
+    var currentCountry: CountryJSON!
+    var imageHandler = ImageHandler()
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpPage()
+        imageHandler.getImage2(urlString: currentCountry.image)
+        image.image = imageHandler.downloadedImage
         // Do any additional setup after loading the view.
     }
     
     
     func setUpPage() {
-        if let info = currentCountry {
-        countryName.text = info.name
-        capital.text = info.capital
-        population.text = String(info.population)
-        continent.text = info.continent
-        information.text = info.description
-        }
+        
+        countryName.text = currentCountry.name
+        capital.text = currentCountry.capital
+        population.text = String(currentCountry.population)
+        continent.text = currentCountry.continent
+        information.text = currentCountry.description
+        
     }
-
+    
+    @IBAction func reload(_ sender: Any) {
+        
+        image.image = imageHandler.downloadedImage
+    }
+    
    
 
 }

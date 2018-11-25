@@ -19,7 +19,7 @@ class CountryListVC: UITableViewController {
         
         for i in json.countriesList {
             let imageHandler = ImageHandler()
-            imageHandler.getImage(url: i.country_info.flag, tableView: tableView)
+            imageHandler.getImage(url: i.country_info.flag)
             
             flags?.append(imageHandler.downloadedImage!)
             
@@ -37,10 +37,22 @@ class CountryListVC: UITableViewController {
         return json.countriesList.count
     }
     
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        <#code#>
-//    }
-//
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        performSegue(withIdentifier: "Info", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Info" {
+            let vc = segue.destination as! CountryInfoVC
+            vc.currentCountry = json.countriesList[(tableView.indexPathForSelectedRow?.row)!]
+            //navigationController?.show(vc, sender: sender)
+            //navigationController?.pushViewController(vc, animated: true)
+        }
+       
+    }
+    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Country", for: indexPath) as! CountryCell
         cell.countryName.text = json.countriesList[indexPath.row].name
