@@ -17,6 +17,27 @@ class ImageHandler {
     
     
     
+    func getImageAndPasteIntoCell(urlString: String, cell: CountryCell) {
+        DispatchQueue.global(qos: .background).async {
+            if let url = URL(string: urlString) {
+                let data = try? Data(contentsOf: url)
+                
+                if let imageData = data {
+                    if let image = UIImage(data: imageData){
+                        self.downloadedImage = image
+                        DispatchQueue.main.sync {
+                            cell.countryImage.image = image
+                           // cell.imageView?.sizeToFit()
+                            //cell.imageView?.contentMode = .scaleAspectFit
+                            //cell.imageView?.contentMode = UIViewContentModeScaleAspectFit
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    
     func getImage2(urlString: String, vc: CountryInfoVC) {
         DispatchQueue.global(qos: .background).async {
             if let url = URL(string: urlString) {
@@ -27,6 +48,7 @@ class ImageHandler {
                         self.downloadedImage = image
                         DispatchQueue.main.sync {
                             vc.image.image = image
+                            
                         }
                         
                     }

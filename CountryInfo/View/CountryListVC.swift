@@ -17,15 +17,15 @@ class CountryListVC: UITableViewController {
         json.getData(urlString: json.startJSONUrl)
         
         
-        for i in json.countriesList {
-            let imageHandler = ImageHandler()
-            imageHandler.getImage(url: i.country_info.flag)
-            
-            flags?.append(imageHandler.downloadedImage!)
-            
-            
-            
-        }
+//        for i in json.countriesList {
+//            let imageHandler = ImageHandler()
+//            imageHandler.getImage(url: i.country_info.flag)
+//
+//            flags?.append(imageHandler.downloadedImage!)
+//
+//
+//
+//        }
         tableView.reloadData()
         
        
@@ -57,12 +57,15 @@ class CountryListVC: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Country", for: indexPath) as! CountryCell
         cell.countryName.text = json.countriesList[indexPath.row].name
         cell.countryCapital.text = json.countriesList[indexPath.row].capital
+        
+        let ih = ImageHandler()
+        ih.getImageAndPasteIntoCell(urlString: json.countriesList[indexPath.row].country_info.flag, cell: cell)
         //cell.additionalInformation.text = json.countriesList[indexPath.row].description_small
         
         
-        if let image = flags?[indexPath.row] {
-            cell.countryImage.image = image
-        }
+//        if let image = flags?[indexPath.row] {
+//            cell.countryImage.image = image
+//        }
 //        if indexPath.row == 0 {
 //            let imageHandler = ImageHandler()
 //            imageHandler.getImage(url: json.countriesList[indexPath.row].image )

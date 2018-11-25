@@ -8,15 +8,15 @@
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="population" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="newRelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CountryImage" inverseName="newRelationship" inverseEntity="CountryImage" syncable="YES"/>
+        <relationship name="newRelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Image" inverseName="newRelationship" inverseEntity="Image" syncable="YES"/>
     </entity>
-    <entity name="CountryImage" representedClassName="CountryImage" syncable="YES" codeGenerationType="class">
+    <entity name="Image" representedClassName="Image" syncable="YES" codeGenerationType="class">
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="newRelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Country" inverseName="newRelationship" inverseEntity="Country" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CountryImage" positionX="173.140625" positionY="57" width="128" height="88"/>
         <element name="Country" positionX="-15.6875" positionY="35.40234375" width="128" height="163"/>
+        <element name="Image" positionX="173.140625" positionY="57" width="128" height="90"/>
     </elements>
 </model>
