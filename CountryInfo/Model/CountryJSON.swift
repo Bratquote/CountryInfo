@@ -11,14 +11,16 @@ import Foundation
 
 struct CountryJSON: Codable {
     
-    var name: String
-    var continent: String
-    var capital: String
-    var population: Int
-    var description_small: String
-    var description: String
-    var image: String
-    var country_info: CountryInfo
+    var name: String?
+    var continent: String?
+    var capital: String?
+    var population: Int?
+    var description_small: String?
+    var description: String?
+    var image: String?
+    var country_info: CountryInfo!
+    
+    
     
     
 }

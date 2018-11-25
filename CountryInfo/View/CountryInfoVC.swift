@@ -23,9 +23,9 @@ class CountryInfoVC: UIViewController {
         super.viewDidLoad()
         setUpPage()
         if currentCountry.image != "" {
-            imageHandler.getImage2(urlString: currentCountry.image, vc: self)
+            imageHandler.getImage2(urlString: currentCountry.image!, vc: self)
         } else {
-            imageHandler.getImage2(urlString: currentCountry.country_info.flag, vc: self)
+            imageHandler.getImage2(urlString: currentCountry.country_info!.flag!, vc: self)
         }
         
         
@@ -38,7 +38,7 @@ class CountryInfoVC: UIViewController {
         
         countryName.text = currentCountry.name
         capital.text = currentCountry.capital
-        population.text = String(currentCountry.population)
+        population.text = String(currentCountry.population!)
         continent.text = currentCountry.continent
         information.text = currentCountry.description
         

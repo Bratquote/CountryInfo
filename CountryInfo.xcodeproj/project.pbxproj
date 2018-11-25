@@ -111,10 +111,10 @@
 		9EA3367C21A92D3300400E5A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9EA3368C21A9340900400E5A /* UseCoreData.swift */,
 				9EA3368621A92EC800400E5A /* JSONData.swift */,
 				9EA3368221A92DB600400E5A /* CountryJSON.swift */,
 				9EA3368421A92EB200400E5A /* CountryInfo.swift */,
-				9EA3368C21A9340900400E5A /* UseCoreData.swift */,
 				9EA3368E21A9343100400E5A /* UseCoreDataProtocol.swift */,
 			);
 			path = Model;

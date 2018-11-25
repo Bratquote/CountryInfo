@@ -27,9 +27,9 @@ class ImageHandler {
                         self.downloadedImage = image
                         DispatchQueue.main.sync {
                             cell.countryImage.image = image
-                           // cell.imageView?.sizeToFit()
-                            //cell.imageView?.contentMode = .scaleAspectFit
-                            //cell.imageView?.contentMode = UIViewContentModeScaleAspectFit
+                            var useCoreData = UseCoreData()
+                            //useCoreData.addImage(url: urlString, data: imageData)
+                           
                         }
                     }
                 }
@@ -77,7 +77,7 @@ class ImageHandler {
                     //checking if the response contains an image
                     if let imageData = data {
                         
-                        //getting the image
+                        //getting the images
                         let image = UIImage(data: imageData)
                         print("Image was downloaded")
                         //displaying the image

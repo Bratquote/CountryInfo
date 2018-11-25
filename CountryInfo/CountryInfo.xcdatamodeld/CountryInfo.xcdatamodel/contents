@@ -3,20 +3,32 @@
     <entity name="Country" representedClassName="Country" syncable="YES" codeGenerationType="class">
         <attribute name="capital" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="continent" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="description_large" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="description_small" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="flag" optional="YES" attributeType="Binary" syncable="YES"/>
-        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="flag" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="population" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="newRelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Image" inverseName="newRelationship" inverseEntity="Image" syncable="YES"/>
     </entity>
+    <entity name="Country2" representedClassName="Country2" syncable="YES" codeGenerationType="class">
+        <attribute name="capital" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="continent" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="description_large" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="description_small" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="flag" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="population" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
     <entity name="Image" representedClassName="Image" syncable="YES" codeGenerationType="class">
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="newRelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Country" inverseName="newRelationship" inverseEntity="Country" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Country" positionX="-15.6875" positionY="35.40234375" width="128" height="163"/>
+        <element name="Country" positionX="-15.6875" positionY="35.40234375" width="128" height="180"/>
         <element name="Image" positionX="173.140625" positionY="57" width="128" height="90"/>
+        <element name="Country2" positionX="81" positionY="108" width="128" height="165"/>
     </elements>
 </model>

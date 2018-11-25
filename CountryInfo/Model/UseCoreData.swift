@@ -16,7 +16,6 @@ class UseCoreData {
     let context: NSManagedObjectContext!
     let countryEntity: NSEntityDescription?
     let imageEntity: NSEntityDescription?
-    //= NSEntityDescription.entity(forEntityName: "Users", in: context)
     
     init() {
         self.appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -25,20 +24,123 @@ class UseCoreData {
         self.imageEntity = NSEntityDescription.entity(forEntityName: "Image", in: context)
     }
     
-    func addCountry(country: CountryJSON) {
-       let newCountry = NSManagedObject(entity: countryEntity!, insertInto: context)
-         
+    func addCountry(countryArray: [CountryJSON]) {
+        for country in countryArray {
+            
+            let newCountry = NSManagedObject(entity: countryEntity!, insertInto: context)
+            newCountry.setValue(Int32(country.population!), forKey: "population")
+            newCountry.setValue(country.capital, forKey: "capital")
+            newCountry.setValue(country.continent, forKey: "continent")
+            newCountry.setValue(country.description_small, forKey: "description_small")
+            newCountry.setValue(country.description, forKey: "description_large")
+            newCountry.setValue(country.country_info!.flag, forKey: "flag")
+            newCountry.setValue(country.image, forKey: "image")
+            newCountry.setValue(country.name, forKey: "name")
+            do {
+                try context.save()
+            } catch {
+                print("Failed saving")
+            }
+            
+        }
     }
     
+    func printCountryList() {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Country")
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try context.fetch(request)
+            for data in result as! [NSManagedObject] {
+                print(data.value(forKey: "flag") as! String)
+            }
+            
+        } catch {
+            
+            print("Failed")
+        }
+    }
+    func deleteCoreData() {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Country")
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try context.fetch(request)
+            for data in result as! [NSManagedObject] {
+                context.delete(data)
+                do {
+                    try context.save()
+                } catch {
+                    print("Failed saving")
+                }
+            }
+            
+        } catch {
+            
+            print("Failed")
+        }
+    }
+    
+    func getCountries() -> [CountryJSON] {
+        var countries = [CountryJSON]()
+        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Country")
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try context.fetch(request)
+            for data in result as! [NSManagedObject] {
+                var country = CountryJSON()
+                country.capital = data.value(forKey: "capital") as? String
+                country.continent = data.value(forKey: "continent") as? String
+                country.description = data.value(forKey: "description_large") as? String
+                country.description_small = data.value(forKey: "description_small") as? String
+                country.image = data.value(forKey: "image") as? String
+                country.name = data.value(forKey: "name") as? String
+                country.population = data.value(forKey: "population") as? Int
+                country.country_info = CountryInfo()
+                country.country_info.flag = data.value(forKey: "flag") as? String
+    
+                countries.append(country)
+            }
+        } catch {
+            print("Error: \(error)")
+        }
+        
+        return countries
+    }
+    
+    
     func addImage(url: String, data: Data) {
+        let newCountry = NSManagedObject(entity: imageEntity!, insertInto: context)
+        
+        newCountry.setValue(data, forKey: "image")
+        newCountry.setValue(url, forKey: "url")
+        //print(newCountry.value(forKey: "image"))
+        do {
+            try context.save()
+        } catch {
+            print("Failed saving")
+        }
         
     }
     
     
+    func getImage(url: String) -> Data? {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Image")
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try context.fetch(request)
+            for data in result as! [NSManagedObject] {
+                
+                if data.value(forKey: "url") as? String == url {
+                    return data.value(forKey: "image") as? Data
+                }
+            }
+        } catch {
+            print(error)
+        }
+        
+        return nil
+    }
     
     
-    
-    
-    
-    
+
 }
