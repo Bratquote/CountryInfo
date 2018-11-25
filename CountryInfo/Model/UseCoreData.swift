@@ -59,7 +59,7 @@ class UseCoreData {
             print("Failed")
         }
     }
-    func deleteCoreData() {
+    func deleteCountryCoreData() {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Country")
         request.returnsObjectsAsFaults = false
         do {
