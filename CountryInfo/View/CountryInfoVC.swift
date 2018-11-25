@@ -22,7 +22,13 @@ class CountryInfoVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpPage()
-        imageHandler.getImage2(urlString: currentCountry.image)
+        if currentCountry.image != "" {
+            imageHandler.getImage2(urlString: currentCountry.image, vc: self)
+        } else {
+            imageHandler.getImage2(urlString: currentCountry.country_info.flag, vc: self)
+        }
+        
+        
         image.image = imageHandler.downloadedImage
         // Do any additional setup after loading the view.
     }
@@ -38,10 +44,7 @@ class CountryInfoVC: UIViewController {
         
     }
     
-    @IBAction func reload(_ sender: Any) {
-        
-        image.image = imageHandler.downloadedImage
-    }
+
     
    
 

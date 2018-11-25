@@ -74,6 +74,7 @@ class CountryListVC: UITableViewController {
         
         if info == "" {
             cell.additionalInformation.isHidden = true
+            updateViewConstraints()
         } else {
             cell.additionalInformation.text = json.countriesList[indexPath.row].description_small
         }

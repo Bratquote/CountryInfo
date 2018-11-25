@@ -17,7 +17,7 @@ class ImageHandler {
     
     
     
-    func getImage2(urlString: String) {
+    func getImage2(urlString: String, vc: CountryInfoVC) {
         DispatchQueue.global(qos: .background).async {
             if let url = URL(string: urlString) {
                 let data = try? Data(contentsOf: url)
@@ -25,6 +25,10 @@ class ImageHandler {
                 if let imageData = data {
                     if let image = UIImage(data: imageData){
                         self.downloadedImage = image
+                        DispatchQueue.main.sync {
+                            vc.image.image = image
+                        }
+                        
                     }
                     
                 }

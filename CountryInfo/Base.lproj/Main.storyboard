@@ -85,14 +85,6 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mXB-mF-IlS">
-                                                <rect key="frame" x="246" y="21" width="47" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Reload"/>
-                                                <connections>
-                                                    <action selector="reload:" destination="agM-zd-iT0" eventType="touchUpInside" id="1zd-lO-2r2"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -211,7 +203,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Additional information" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kNV-Zw-Al3">
-                                            <rect key="frame" x="16" y="59" width="343" height="82.5"/>
+                                            <rect key="frame" x="16" y="59" width="343" height="90.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -236,7 +228,7 @@
                                         <constraint firstItem="C1P-pX-7De" firstAttribute="leading" secondItem="NmD-EN-B2N" secondAttribute="leading" id="RI8-Sp-qGz"/>
                                         <constraint firstItem="NmD-EN-B2N" firstAttribute="leading" secondItem="wfD-4J-X0i" secondAttribute="trailing" constant="8" id="htJ-YR-P2e"/>
                                         <constraint firstItem="kNV-Zw-Al3" firstAttribute="leading" secondItem="ymP-6L-sY1" secondAttribute="leading" constant="16" id="xxN-jd-LAC"/>
-                                        <constraint firstAttribute="bottom" secondItem="kNV-Zw-Al3" secondAttribute="bottom" constant="16" id="y1u-HT-jnE"/>
+                                        <constraint firstAttribute="bottom" secondItem="kNV-Zw-Al3" secondAttribute="bottom" constant="8" id="y1u-HT-jnE"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
