@@ -27,7 +27,8 @@ class ImageHandler {
                         self.downloadedImage = image
                         DispatchQueue.main.sync {
                             cell.countryImage.image = image
-                            var useCoreData = UseCoreData()
+                            let useCoreData = UseCoreData()
+                            JSONHandler.imageDictionary[urlString] = imageData
                             //useCoreData.addImage(url: urlString, data: imageData)
                            
                         }
@@ -46,6 +47,10 @@ class ImageHandler {
                 if let imageData = data {
                     if let image = UIImage(data: imageData){
                         self.downloadedImage = image
+                        let useCoreData = UseCoreData()
+                        if imageData != useCoreData.getImageFromCoreData(url: urlString) {
+                        useCoreData.addImage(url: urlString, data: imageData)
+                        }
                         DispatchQueue.main.sync {
                             vc.image.image = image
                             

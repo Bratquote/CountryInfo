@@ -21,20 +21,16 @@ class CountryInfoVC: UIViewController {
     var imageHandler = ImageHandler()
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpPage()
-        if currentCountry.image != "" {
-            imageHandler.getImage2(urlString: currentCountry.image!, vc: self)
-        } else {
-            imageHandler.getImage2(urlString: currentCountry.country_info!.flag!, vc: self)
-        }
+        setUpPageLabels()
+        setUpPageImages()
         
         
-        image.image = imageHandler.downloadedImage
-        // Do any additional setup after loading the view.
+        
+        
     }
     
     
-    func setUpPage() {
+    func setUpPageLabels() {
         
         countryName.text = currentCountry.name
         capital.text = currentCountry.capital
@@ -44,8 +40,30 @@ class CountryInfoVC: UIViewController {
         
     }
     
-
     
-   
-
+    func setUpPageImages() {
+        
+        if ReachabilityTest.isConnectedToNetwork() {
+            //If we connected to network first we try to find image in imageDictionary, else get from json
+            if let data = JSONHandler.imageDictionary[currentCountry.image!] {
+                image.image = UIImage(data: data)
+            }  else if currentCountry.image != "" {
+                imageHandler.getImage2(urlString: currentCountry.image!, vc: self)
+            } else if let data = JSONHandler.imageDictionary[currentCountry.country_info.flag!] {
+                image.image = UIImage(data: data)
+            } else {
+                imageHandler.getImage2(urlString: currentCountry.country_info!.flag!, vc: self)
+            }
+        } else {
+        // if connection lost we get image from CoreData
+            let useCoreData = UseCoreData()
+            if currentCountry.image != "" {
+                if let data = useCoreData.getImageFromCoreData(url: currentCountry.image!) {
+                    image.image = UIImage(data: data)
+                }
+            } else if let data = useCoreData.getImageFromCoreData(url: currentCountry.country_info.flag!){
+                image.image = UIImage(data: data)
+            }
+        }
+    }
 }
