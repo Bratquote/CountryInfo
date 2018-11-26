@@ -36,6 +36,7 @@ class UseCoreData {
             newCountry.setValue(country.country_info!.flag, forKey: "flag")
             newCountry.setValue(country.image, forKey: "image")
             newCountry.setValue(country.name, forKey: "name")
+            
             do {
                 try context.save()
             } catch {
@@ -99,6 +100,8 @@ class UseCoreData {
                 country.country_info.flag = data.value(forKey: "flag") as? String
     
                 countries.append(country)
+                
+                
             }
         } catch {
             print("Error: \(error)")
@@ -108,12 +111,18 @@ class UseCoreData {
     }
     
     
-    func addImage(url: String, data: Data) {
-        let newCountry = NSManagedObject(entity: imageEntity!, insertInto: context)
+  
         
-        newCountry.setValue(data, forKey: "image")
-        newCountry.setValue(url, forKey: "url")
-        //print(newCountry.value(forKey: "image"))
+    
+    
+    
+    func addImage(url: String, data: Data) {
+        let newImage = NSManagedObject(entity: imageEntity!, insertInto: context)
+        
+        newImage.setValue(data, forKey: "image")
+        newImage.setValue(url, forKey: "url")
+        print("Saving image")
+        print(newImage.value(forKey: "image"))
         do {
             try context.save()
         } catch {
@@ -123,7 +132,7 @@ class UseCoreData {
     }
     
     
-    func getImage(url: String) -> Data? {
+    func getImageFromCoreData(url: String) -> Data? {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Image")
         request.returnsObjectsAsFaults = false
         do {
