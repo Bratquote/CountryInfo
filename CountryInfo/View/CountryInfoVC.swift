@@ -19,16 +19,16 @@ class CountryInfoVC: UIViewController {
     
     var currentCountry: CountryJSON!
     var imageHandler = ImageHandler()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpPageLabels()
         setUpPageImages()
-        
-        
-        
-        
     }
     
+    @IBAction func backButton(_ sender: Any) {
+        performSegue(withIdentifier: "backSegue", sender: nil)
+    }
     
     func setUpPageLabels() {
         

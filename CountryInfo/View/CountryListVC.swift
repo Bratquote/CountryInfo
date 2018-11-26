@@ -91,7 +91,13 @@ class CountryListVC: UITableViewController {
        
     }
     
-
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if countriesList[indexPath.row].description_small == "" {
+            return 65
+        } else {
+            return UITableView.automaticDimension
+        }
+    }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Country", for: indexPath) as! CountryCell
         let country = countriesList[indexPath.row]
@@ -114,16 +120,12 @@ class CountryListVC: UITableViewController {
                 cell.countryImage.image = UIImage(data: data)
             }
         }
-        
-//        if let data2 = useCoreData.getImage(url: countriesList[indexPath.row].country_info.flag) {
-//
-//             cell.countryImage.image = UIImage(data: data2)!
-//            }
        
         
         let info = country.description_small
         if info == "" {
             cell.additionalInformation.isHidden = true
+            cell
             updateViewConstraints()
         } else {
             cell.additionalInformation.text = country.description_small
@@ -131,4 +133,8 @@ class CountryListVC: UITableViewController {
         
         return cell
     }
+    
+    
+    //Allow us to back to this view from CountryInfoVC
+    @IBAction func unwindToVC1(segue:UIStoryboardSegue) { }
 }

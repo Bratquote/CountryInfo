@@ -28,7 +28,7 @@
     </entity>
     <elements>
         <element name="Country" positionX="-15.6875" positionY="35.40234375" width="128" height="180"/>
-        <element name="Image" positionX="173.140625" positionY="57" width="128" height="90"/>
         <element name="Country2" positionX="81" positionY="108" width="128" height="165"/>
+        <element name="Image" positionX="173.140625" positionY="57" width="128" height="90"/>
     </elements>
 </model>
