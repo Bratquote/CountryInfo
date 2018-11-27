@@ -18,18 +18,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bCA-qc-aJi">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="276"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bCA-qc-aJi">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="282"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="bCA-qc-aJi" secondAttribute="height" multiplier="25:14" id="tb2-G0-n3J"/>
+                                    <constraint firstAttribute="width" secondItem="bCA-qc-aJi" secondAttribute="height" multiplier="69:47" id="6uW-1u-yoh"/>
                                 </constraints>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MJ7-Rd-QVo">
-                                <rect key="frame" x="0.0" y="276" width="414" height="586"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MJ7-Rd-QVo">
+                                <rect key="frame" x="0.0" y="278" width="414" height="584"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cEs-4a-eNu">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="203"/>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cEs-4a-eNu">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="215"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e8W-36-gaV">
                                                 <rect key="frame" x="12" y="24" width="130.5" height="24"/>
@@ -146,7 +146,7 @@
                                     <constraint firstItem="cEs-4a-eNu" firstAttribute="height" secondItem="MJ7-Rd-QVo" secondAttribute="height" priority="250" id="BKy-vE-n4P"/>
                                     <constraint firstItem="cEs-4a-eNu" firstAttribute="top" secondItem="MJ7-Rd-QVo" secondAttribute="top" id="Okk-uc-GjE"/>
                                     <constraint firstItem="cEs-4a-eNu" firstAttribute="width" secondItem="MJ7-Rd-QVo" secondAttribute="width" id="Ziu-Jt-BCD"/>
-                                    <constraint firstAttribute="bottom" secondItem="cEs-4a-eNu" secondAttribute="bottom" id="duf-b8-m3l"/>
+                                    <constraint firstAttribute="bottom" secondItem="cEs-4a-eNu" secondAttribute="bottom" constant="369" id="duf-b8-m3l"/>
                                 </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y5l-kj-X9S">
@@ -163,7 +163,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="bCA-qc-aJi" firstAttribute="top" secondItem="sw2-yr-BI3" secondAttribute="top" id="LIo-wA-lQe"/>
+                            <constraint firstItem="bCA-qc-aJi" firstAttribute="top" secondItem="rlH-Yq-D3C" secondAttribute="top" id="LIo-wA-lQe"/>
                             <constraint firstItem="bCA-qc-aJi" firstAttribute="trailing" secondItem="MJ7-Rd-QVo" secondAttribute="trailing" id="OSs-sj-BbQ"/>
                             <constraint firstItem="MJ7-Rd-QVo" firstAttribute="leading" secondItem="sw2-yr-BI3" secondAttribute="leading" id="Tb3-35-7QP"/>
                             <constraint firstItem="MJ7-Rd-QVo" firstAttribute="trailing" secondItem="sw2-yr-BI3" secondAttribute="trailing" id="WMd-fd-so8"/>
@@ -189,36 +189,6 @@
                 <exit id="Yg3-qS-TZx" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2085.507246376812" y="124.55357142857142"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="QZo-pw-cXH">
-            <objects>
-                <viewController id="X1n-2n-zsj" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="49Z-Zr-ecf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="engels-715x408" translatesAutoresizingMaskIntoConstraints="NO" id="7Dp-sJ-6zU">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="267"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LSE-eO-WKP" userLabel="Countries">
-                                <rect key="frame" x="9" y="10" width="83" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <state key="normal" title="Countries">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="O0h-fp-JVL"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="A4Z-ZI-LHG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2048.8000000000002" y="793.8530734632684"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pjL-7b-2eR">
@@ -313,8 +283,8 @@
                                 <connections>
                                     <outlet property="additionalInformation" destination="kNV-Zw-Al3" id="AGM-FK-UX6"/>
                                     <outlet property="countryCapital" destination="C1P-pX-7De" id="OSv-Ws-krU"/>
-                                    <outlet property="countryImage" destination="wfD-4J-X0i" id="JM5-pG-CGF"/>
                                     <outlet property="countryName" destination="NmD-EN-B2N" id="GKH-DU-ziB"/>
+                                    <outlet property="flag" destination="wfD-4J-X0i" id="JM5-pG-CGF"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -334,7 +304,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="engels-715x408" width="715" height="408"/>
         <image name="icons8-babys_room" width="100" height="100"/>
         <image name="icons8-europe_filled" width="100" height="100"/>
         <image name="icons8-left_4" width="32" height="32"/>

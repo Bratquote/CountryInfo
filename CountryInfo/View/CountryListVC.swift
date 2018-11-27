@@ -12,6 +12,7 @@ class CountryListVC: UITableViewController {
     let json = JSONHandler()
     let imageHandler2 = ImageHandler()
     let useCoreData = UseCoreData()
+    let infoSegue = "Info"
     
     var countriesList: [CountryJSON]!
     
@@ -26,8 +27,6 @@ class CountryListVC: UITableViewController {
              print("Not connected to network")
             countriesList = useCoreData.getCountries()
         }
-        
-        
         
         
         refreshControl = {
@@ -66,7 +65,6 @@ class CountryListVC: UITableViewController {
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == countriesList.count - 1 {
             if ReachabilityTest.isConnectedToNetwork() {
-                print("WTF?")
                 if let nextJSON = json.nextJSONUrl {
                     json.getData(urlString: nextJSON)
                     countriesList += json.countriesList
@@ -80,7 +78,7 @@ class CountryListVC: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        performSegue(withIdentifier: "Info", sender: nil)
+        performSegue(withIdentifier: infoSegue, sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -107,7 +105,7 @@ class CountryListVC: UITableViewController {
         
         if ReachabilityTest.isConnectedToNetwork() {
         if let data = JSONHandler.imageDictionary[country.country_info.flag] {
-            cell.countryImage.image = UIImage(data: data)
+            cell.flag.image = UIImage(data: data)
         } else {
             print(JSONHandler.imageDictionary[country.country_info.flag])
             print(JSONHandler.imageDictionary.count)
@@ -117,7 +115,7 @@ class CountryListVC: UITableViewController {
        
         } else {
             if let data = useCoreData.getImageFromCoreData(url: country.country_info.flag) {
-                cell.countryImage.image = UIImage(data: data)
+                cell.flag.image = UIImage(data: data)
             }
         }
        
@@ -125,7 +123,6 @@ class CountryListVC: UITableViewController {
         let info = country.description_small
         if info == "" {
             cell.additionalInformation.isHidden = true
-            cell
             updateViewConstraints()
         } else {
             cell.additionalInformation.text = country.description_small

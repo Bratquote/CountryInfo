@@ -10,7 +10,7 @@ import UIKit
 
 class CountryCell: UITableViewCell {
 
-    @IBOutlet weak var countryImage: UIImageView!
+    @IBOutlet weak var flag: UIImageView!
     @IBOutlet weak var countryName: UILabel!
     @IBOutlet weak var countryCapital: UILabel!
     @IBOutlet weak var additionalInformation: UILabel!

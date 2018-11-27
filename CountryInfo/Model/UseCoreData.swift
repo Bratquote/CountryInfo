@@ -16,15 +16,19 @@ class UseCoreData {
     let context: NSManagedObjectContext!
     let countryEntity: NSEntityDescription?
     let imageEntity: NSEntityDescription?
+    let imageUrlEntity: NSEntityDescription?
     
     init() {
         self.appDelegate = UIApplication.shared.delegate as! AppDelegate
         self.context = appDelegate.persistentContainer.viewContext
         self.countryEntity = NSEntityDescription.entity(forEntityName: "Country", in: context)
         self.imageEntity = NSEntityDescription.entity(forEntityName: "Image", in: context)
+        self.imageUrlEntity = NSEntityDescription.entity(forEntityName: "ImageUrl", in: context)
+        
     }
     
     func addCountry(countryArray: [CountryJSON]) {
+        
         for country in countryArray {
             
             let newCountry = NSManagedObject(entity: countryEntity!, insertInto: context)
@@ -46,6 +50,21 @@ class UseCoreData {
         }
     }
     
+    
+    func addToImageUrl(country: CountryJSON, url: String) {
+        
+        for i in (country.country_info?.images)! {
+            let imageUrl = NSManagedObject(entity: imageUrlEntity!, insertInto: context)
+            imageUrl.setValue(i, forKey: "url")
+            imageUrl.setValue(country.name, forKey: "countryName")
+        }
+        do {
+            try context.save()
+        } catch {
+            print("Failed saving")
+        }
+        
+    }
     func printCountryList() {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Country")
         request.returnsObjectsAsFaults = false
@@ -79,6 +98,21 @@ class UseCoreData {
             print("Failed")
         }
     }
+    
+    func countryCoreDataCount() -> Int {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Country")
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try context.fetch(request) as! [NSManagedObject]
+            print("Result count: \(result.count)")
+            return result.count
+        } catch {
+            
+            print("Failed")
+        }
+        return 0
+        }
+    
     
     func getCountries() -> [CountryJSON] {
         var countries = [CountryJSON]()
@@ -117,17 +151,25 @@ class UseCoreData {
     
     
     func addImage(url: String, data: Data) {
-        let newImage = NSManagedObject(entity: imageEntity!, insertInto: context)
         
-        newImage.setValue(data, forKey: "image")
-        newImage.setValue(url, forKey: "url")
-        print("Saving image")
-        print(newImage.value(forKey: "image"))
+        if let dataFromCoreData = getImageFromCoreData(url: url) {
+            if dataFromCoreData != data {
+                let newImage = NSManagedObject(entity: imageEntity!, insertInto: context)
+                newImage.setValue(data, forKey: "image")
+                newImage.setValue(url, forKey: "url")
+            }
+        } else {
+            let newImage = NSManagedObject(entity: imageEntity!, insertInto: context)
+            newImage.setValue(data, forKey: "image")
+            newImage.setValue(url, forKey: "url")
+        }
         do {
             try context.save()
         } catch {
             print("Failed saving")
         }
+        
+        
         
     }
     

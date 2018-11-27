@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CountryInfoVC: UIViewController {
+class CountryInfoVC: UIViewController{
 
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var countryName: UILabel!
@@ -24,10 +24,18 @@ class CountryInfoVC: UIViewController {
         super.viewDidLoad()
         setUpPageLabels()
         setUpPageImages()
+        setUpNavigationBar()
+        
     }
     
     @IBAction func backButton(_ sender: Any) {
         performSegue(withIdentifier: "backSegue", sender: nil)
+    }
+    
+    func setUpNavigationBar() {
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
     }
     
     func setUpPageLabels() {
@@ -48,11 +56,11 @@ class CountryInfoVC: UIViewController {
             if let data = JSONHandler.imageDictionary[currentCountry.image!] {
                 image.image = UIImage(data: data)
             }  else if currentCountry.image != "" {
-                imageHandler.getImage2(urlString: currentCountry.image!, vc: self)
+                imageHandler.getImage2(urlString: currentCountry.image!, imageView: image)
             } else if let data = JSONHandler.imageDictionary[currentCountry.country_info.flag!] {
                 image.image = UIImage(data: data)
             } else {
-                imageHandler.getImage2(urlString: currentCountry.country_info!.flag!, vc: self)
+                imageHandler.getImage2(urlString: currentCountry.country_info!.flag!, imageView: image)
             }
         } else {
         // if connection lost we get image from CoreData

@@ -26,7 +26,7 @@ class ImageHandler {
                     if let image = UIImage(data: imageData){
                         self.downloadedImage = image
                         DispatchQueue.main.sync {
-                            cell.countryImage.image = image
+                            cell.flag.image = image
                             let useCoreData = UseCoreData()
                             JSONHandler.imageDictionary[urlString] = imageData
                             //useCoreData.addImage(url: urlString, data: imageData)
@@ -39,7 +39,7 @@ class ImageHandler {
     }
     
     
-    func getImage2(urlString: String, vc: CountryInfoVC) {
+    func getImage2(urlString: String, imageView: UIImageView) {
         DispatchQueue.global(qos: .background).async {
             if let url = URL(string: urlString) {
                 let data = try? Data(contentsOf: url)
@@ -52,7 +52,7 @@ class ImageHandler {
                         useCoreData.addImage(url: urlString, data: imageData)
                         }
                         DispatchQueue.main.sync {
-                            vc.image.image = image
+                            imageView.image = image
                             
                         }
                         

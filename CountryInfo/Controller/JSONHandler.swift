@@ -12,7 +12,9 @@ import UIKit
 
 class JSONHandler {
     var countriesList = [CountryJSON]()
+    var fullCountriesList = [CountryJSON]()
     var useCoreData = UseCoreData()
+    
     
     static var imageDictionary: [String: Data] = [:]
     var startJSONUrl: String = "https://rawgit.com/NikitaAsabin/799e4502c9fc3e0ea7af439b2dfd88fa/raw/7f5c6c66358501f72fada21e04d75f64474a7888/page1.json"
@@ -31,9 +33,11 @@ class JSONHandler {
         
         if let jsonCountries = try? decoder.decode(JSONData.self, from: data) {
             countriesList = jsonCountries.countries
-        
+            fullCountriesList += countriesList
+            if useCoreData.countryCoreDataCount() < fullCountriesList.count {
+                print("First time download")
             useCoreData.addCountry(countryArray: countriesList)
-            
+            }
             nextJSONUrl = jsonCountries.next
         }
     }
