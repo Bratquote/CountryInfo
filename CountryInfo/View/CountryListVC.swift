@@ -107,8 +107,6 @@ class CountryListVC: UITableViewController {
         if let data = JSONHandler.imageDictionary[country.country_info.flag] {
             cell.flag.image = UIImage(data: data)
         } else {
-            print(JSONHandler.imageDictionary[country.country_info.flag])
-            print(JSONHandler.imageDictionary.count)
             let ih = ImageHandler()
              ih.getImageAndPasteIntoCell(urlString: country.country_info!.flag!, cell: cell)
         }

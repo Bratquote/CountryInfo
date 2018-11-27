@@ -29,7 +29,7 @@ class ImageHandler {
                             cell.flag.image = image
                             let useCoreData = UseCoreData()
                             JSONHandler.imageDictionary[urlString] = imageData
-                            //useCoreData.addImage(url: urlString, data: imageData)
+                            useCoreData.addImage(url: urlString, data: imageData)
                            
                         }
                     }

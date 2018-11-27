@@ -34,6 +34,8 @@ class JSONHandler {
         if let jsonCountries = try? decoder.decode(JSONData.self, from: data) {
             countriesList = jsonCountries.countries
             fullCountriesList += countriesList
+            print("count of CoreData: \(useCoreData.countryCoreDataCount())")
+            print("count of List: \(fullCountriesList.count)")
             if useCoreData.countryCoreDataCount() < fullCountriesList.count {
                 print("First time download")
             useCoreData.addCountry(countryArray: countriesList)
