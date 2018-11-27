@@ -65,6 +65,8 @@ class UseCoreData {
         }
         
     }
+    
+    
     func printCountryList() {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Country")
         request.returnsObjectsAsFaults = false
