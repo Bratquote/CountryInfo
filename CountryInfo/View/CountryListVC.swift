@@ -11,61 +11,127 @@ import UIKit
 class CountryListVC: UITableViewController {
     let json = JSONHandler()
     let imageHandler2 = ImageHandler()
-    var flags: [UIImage]?
+    let useCoreData = UseCoreData()
+    let infoSegue = "Info"
+    
+    var countriesList: [CountryJSON]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        json.getData(urlString: json.startJSONUrl)
-        
-        
-        for i in json.countriesList {
-            let imageHandler = ImageHandler()
-            imageHandler.getImage(url: i.country_info.flag, tableView: tableView)
-            
-            flags?.append(imageHandler.downloadedImage!)
-            
-            
-            
+        //useCoreData.deleteCountryCoreData()
+        if ReachabilityTest.isConnectedToNetwork() {
+            print("Connected to network")
+            json.getData(urlString: json.startJSONUrl)
+            countriesList = json.countriesList
+        } else {
+             print("Not connected to network")
+            countriesList = useCoreData.getCountries()
         }
+        
+        
+        refreshControl = {
+            let refreshControl = UIRefreshControl()
+            refreshControl.addTarget(self, action:
+                #selector(self.handleRefresh(_:)),
+                                     for: UIControl.Event.valueChanged)
+            refreshControl.tintColor = UIColor.orange
+            
+            return refreshControl
+        }()
+        
+        tableView.addSubview(self.refreshControl!)
         tableView.reloadData()
         
+    }
+    
+    
+    
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        DispatchQueue.main.async {
+            self.json.refreshTable(urlString: self.json.startJSONUrl, tableView: self.tableView)
+        }
        
         
-        // Do any additional setup after loading the view.
+        
+            //countriesList = json.countriesList
+            
+        
     }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return json.countriesList.count
+        return countriesList.count
     }
     
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        <#code#>
-//    }
-//
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == countriesList.count - 1 {
+            if ReachabilityTest.isConnectedToNetwork() {
+                if let nextJSON = json.nextJSONUrl {
+                    json.getData(urlString: nextJSON)
+                    countriesList += json.countriesList
+                    json.nextJSONUrl = nil
+                    tableView.reloadData()
+                }
+            }
+            
+            
+        }
+    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        performSegue(withIdentifier: infoSegue, sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Info" {
+            let vc = segue.destination as! CountryInfoVC
+            vc.currentCountry = countriesList[(tableView.indexPathForSelectedRow?.row)!]
+        }
+       
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if countriesList[indexPath.row].description_small == "" {
+            return 65
+        } else {
+            return UITableView.automaticDimension
+        }
+    }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Country", for: indexPath) as! CountryCell
-        cell.countryName.text = json.countriesList[indexPath.row].name
-        cell.countryCapital.text = json.countriesList[indexPath.row].capital
-        //cell.additionalInformation.text = json.countriesList[indexPath.row].description_small
+        let country = countriesList[indexPath.row]
+        cell.countryName.text = country.name
+        cell.countryCapital.text = country.capital
         
         
-        if let image = flags?[indexPath.row] {
-            cell.countryImage.image = image
+        if ReachabilityTest.isConnectedToNetwork() {
+        if let data = JSONHandler.imageDictionary[country.country_info.flag] {
+            cell.flag.image = UIImage(data: data)
+        } else {
+            print(JSONHandler.imageDictionary[country.country_info.flag])
+            print(JSONHandler.imageDictionary.count)
+            let ih = ImageHandler()
+             ih.getImageAndPasteIntoCell(urlString: country.country_info!.flag!, cell: cell)
         }
-//        if indexPath.row == 0 {
-//            let imageHandler = ImageHandler()
-//            imageHandler.getImage(url: json.countriesList[indexPath.row].image )
-//            print("The URL is \(json.countriesList[indexPath.row].country_info.flag)")
-//            cell.countryImage.image = imageHandler.downloadedImage
-//        }
        
-        let info = json.countriesList[indexPath.row].description_small
+        } else {
+            if let data = useCoreData.getImageFromCoreData(url: country.country_info.flag) {
+                cell.flag.image = UIImage(data: data)
+            }
+        }
+       
         
+        let info = country.description_small
         if info == "" {
             cell.additionalInformation.isHidden = true
+            updateViewConstraints()
         } else {
-            cell.additionalInformation.text = json.countriesList[indexPath.row].description_small
+            cell.additionalInformation.text = country.description_small
         }
         
         return cell
     }
+    
+    
+    //Allow us to back to this view from CountryInfoVC
+    @IBAction func unwindToVC1(segue:UIStoryboardSegue) { }
 }

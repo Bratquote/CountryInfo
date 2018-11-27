@@ -11,5 +11,5 @@ import Foundation
 
 struct CountryInfo: Codable {
     var images: [String]?
-    var flag: String
+    var flag: String!
 }

@@ -15,7 +15,55 @@ class ImageHandler {
     var downloadedImage: UIImage?
     var URL_IMAGE = URL(string: "https://cdn.pixabay.com/photo/2015/10/24/21/30/abkhazia-1005013_960_720.png")
     
-    func getImage(url: String, tableView: UITableView) {
+    
+    
+    func getImageAndPasteIntoCell(urlString: String, cell: CountryCell) {
+        DispatchQueue.global(qos: .background).async {
+            if let url = URL(string: urlString) {
+                let data = try? Data(contentsOf: url)
+                
+                if let imageData = data {
+                    if let image = UIImage(data: imageData){
+                        self.downloadedImage = image
+                        DispatchQueue.main.sync {
+                            cell.flag.image = image
+                            let useCoreData = UseCoreData()
+                            JSONHandler.imageDictionary[urlString] = imageData
+                            //useCoreData.addImage(url: urlString, data: imageData)
+                           
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    func getImage2(urlString: String, imageView: UIImageView) {
+        DispatchQueue.global(qos: .background).async {
+            if let url = URL(string: urlString) {
+                let data = try? Data(contentsOf: url)
+                
+                if let imageData = data {
+                    if let image = UIImage(data: imageData){
+                        self.downloadedImage = image
+                        let useCoreData = UseCoreData()
+                        if imageData != useCoreData.getImageFromCoreData(url: urlString) {
+                        useCoreData.addImage(url: urlString, data: imageData)
+                        }
+                        DispatchQueue.main.sync {
+                            imageView.image = image
+                            
+                        }
+                        
+                    }
+                    
+                }
+            }
+        }
+        
+    }
+    func getImage(url: String) {
         let session = URLSession(configuration: .default)
         
         //creating a dataTask
@@ -34,7 +82,7 @@ class ImageHandler {
                     //checking if the response contains an image
                     if let imageData = data {
                         
-                        //getting the image
+                        //getting the images
                         let image = UIImage(data: imageData)
                         print("Image was downloaded")
                         //displaying the image
